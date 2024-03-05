@@ -1,0 +1,8 @@
+---
+cluster_name: sno-b
+rendezvous_ip: "192.168.1.253"
+interfaces:
+  - name: en1
+    mac_address: b4:45:06:f1:11:37
+  - name: en2
+    mac_address: b4:45:06:f1:11:38

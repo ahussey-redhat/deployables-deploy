@@ -1,0 +1,3 @@
+---
+- name: Use deployables.ocp tasks to configure build node
+  ansible.builtin.import_playbook: deployables.ocp.configure_build_node

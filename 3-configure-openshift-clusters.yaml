@@ -1,0 +1,3 @@
+---
+- name: Use deployables.ocp tasks to configure OpenShift clusters
+  ansible.builtin.import_playbook: deployables.ocp.configure_cluster

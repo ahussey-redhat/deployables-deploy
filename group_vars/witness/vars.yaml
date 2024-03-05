@@ -1,0 +1,38 @@
+---
+ansible_user: ansible
+cockpit_config:
+  WebService:
+    LoginTitle: "{{ inventory_hostname }}"
+cockpit_packages:
+  - cockpit
+  - cockpit-bridge
+  - cockpit-networkmanager
+  - cockpit-machines
+  - cockpit-packagekit
+  - cockpit-podman
+  - cockpit-selinux
+  - cockpit-storaged
+  - cockpit-system
+  - cockpit-ws
+network_connections:
+  - name: baremetal
+    type: bridge
+    interface_name: baremetal
+    state: up
+    ip:
+      dhcp4: true
+      auto6: false
+  - name: enp4s0
+    type: ethernet
+    interface_name: enp4s0
+    port_type: bridge
+    controller: baremetal
+    state: up
+rhc_state: present
+rhc_insights:
+  state: absent
+rhc_repositories:
+  - name: rhel-9-for-x86_64-baseos-rpms
+    state: enabled
+  - name: rhel-9-for-x86_64-appstream-rpms
+    state: enabled

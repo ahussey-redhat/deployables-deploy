@@ -1,0 +1,8 @@
+---
+cluster_name: sno-a
+rendezvous_ip: "192.168.1.254"
+interfaces:
+  - name: en1
+    mac_address: b4:45:06:f1:0d:d1
+  - name: en2
+    mac_address: b4:45:06:f1:0d:d2

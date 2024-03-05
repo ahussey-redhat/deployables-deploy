@@ -1,0 +1,21 @@
+collections:
+  - source: ./dependencies/ansible-posix-1.5.4.tar.gz
+    type: file
+  - source: ./dependencies/ansible-utils-3.1.0.tar.gz
+    type: file
+  - source: ./dependencies/community-general-8.3.0.tar.gz
+    type: file
+  - source: ./dependencies/community-libvirt-1.3.0.tar.gz
+    type: file
+  - source: ./dependencies/community-okd-3.0.1.tar.gz
+    type: file
+  - source: ./dependencies/kubernetes-core-3.0.0.tar.gz
+    type: file
+  - source: ./dependencies/redhat-satellite_operations-2.1.0.tar.gz
+    type: file
+  - source: ./dependencies/redhat-satellite-4.0.0.tar.gz
+    type: file
+  - source: ./dependencies/redhat-rhel_system_roles-1.22.0.tar.gz
+    type: file
+  - name: git+https://github.com/ahussey-redhat/deployables.ocp.git
+    scm: git

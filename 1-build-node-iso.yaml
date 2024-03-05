@@ -1,0 +1,3 @@
+---
+- name: Use deployables.ocp tasks to build the build node iso
+  ansible.builtin.import_playbook: deployables.ocp.build_node_iso

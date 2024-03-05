@@ -1,0 +1,11 @@
+---
+all:
+  vars:
+  children:
+    witness:
+      hosts:
+        witness-node.uotest01.poc.lab.local:
+    clusters:
+      hosts:
+        sled1.uotest01.poc.lab.local:
+        sled2.uotest01.poc.lab.local:
