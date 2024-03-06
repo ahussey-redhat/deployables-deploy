@@ -9,6 +9,8 @@ collections:
     type: file
   - source: ./dependencies/community-okd-3.0.1.tar.gz
     type: file
+  - source: ./dependencies/juniper-device-1.0.3.tar.gz
+    type: file
   - source: ./dependencies/kubernetes-core-3.0.0.tar.gz
     type: file
   - source: ./dependencies/containers-podman-1.12.0.tar.gz
