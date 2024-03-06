@@ -1,0 +1,3 @@
+---
+host_name: "sw0.uotest01.poc.lab.local"
+port: /dev/ttyUSB0

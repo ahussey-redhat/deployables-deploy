@@ -1,0 +1,134 @@
+---
+mode: serial
+user: root
+host: localhost
+passwd: "{{ junos_password }}"
+system_name_servers:
+  - 192.168.100.1
+subnets:
+# Services
+  - network_address: 192.168.100
+    mask: 24
+    dhcp_enabled: true
+    dhcp_start: 192.168.100.10
+    dhcp_end: 192.168.100.254
+    domain_name:  uotest01.poc.lab.local
+    name_servers:
+      - 172.18.0.20
+    gateway: 192.168.100.1
+    last_ip: 192.168.100.254
+    lease_time: 3600
+    name: services
+    vlan:
+      tag: services
+      id: 100
+      l3_interface: irb.100
+    security_zones:
+      - lan-trusted
+    virtual_router: lan-vr
+    allowed_ribs:
+      - dmz-vr
+# Security
+  - network_address: 192.168.101
+    mask: 24
+    dhcp_enabled: true
+    dhcp_start: 192.168.101.10
+    dhcp_end: 192.168.101.254
+    domain_name:  uotest01.poc.lab.local
+    name_servers:
+      - 172.18.0.20
+    gateway: 192.168.101.1
+    last_ip: 192.168.101.254
+    lease_time: 3600
+    name: security
+    vlan:
+      tag: security
+      id: 101
+      l3_interface: irb.101
+    security_zones:
+      - lan-trusted
+    virtual_router: lan-vr
+# DMZ
+  - network_address: 192.168.102
+    mask: 24
+    dhcp_enabled: true
+    dhcp_start: 192.168.102.10
+    dhcp_end: 192.168.102.254
+    domain_name:  uotest01.poc.lab.local
+    name_servers:
+      - 8.8.8.8
+      - 8.8.4.4
+    gateway: 192.168.102.1
+    last_ip: 192.168.102.254
+    lease_time: 3600
+    name: dmz
+    vlan:
+      tag: dmz
+      id: 102
+      l3_interface: irb.102
+    security_zones:
+      - dmz-untrusted
+    virtual_router: dmz-vr
+    allowed_ribs:
+      - lan-vr
+# Clients
+  - network_address: 192.168.103
+    mask: 24
+    dhcp_enabled: true
+    dhcp_start: 192.168.103.10
+    dhcp_end: 192.168.103.254
+    domain_name:  uotest01.poc.lab.local
+    name_servers:
+      - 8.8.8.8
+      - 8.8.4.4
+    gateway: 192.168.103.1
+    last_ip: 192.168.103.254
+    lease_time: 3600
+    name: clients
+    vlan:
+      tag: clients
+      id: 103
+      l3_interface: irb.103
+    security_zones:
+      - lan-trusted
+    virtual_router: lan-vr
+qfx_chassis:
+  - serial: X4085-C
+    member: 1
+virtual_routers:
+  - dmz-untrusted
+  - lan-trusted
+lan_interfaces:
+# Laptop
+  - name: ge-0/0/1
+    native_vlan_id: 100
+    vlans:
+      - 100
+    virtual_router: lan-trusted
+    vlan_mode: trunk
+# Dell XR4000 Sled1
+  - name: ae9
+    vlans:
+      - 100
+      - 102
+      - 103
+    virtual_router: lan-trusted
+    rstp: true
+    native_vlan_id: 100
+    vlan_mode: trunk
+    members:
+      - xe-0/0/6
+      - xe-0/0/7
+# Dell XR4000 Sled2
+  - name: ae10
+    vlans:
+      - 100
+      - 102
+      - 103
+    virtual_router: lan-trusted
+    rstp: true
+    native_vlan_id: 100
+    vlan_mode: trunk
+    members:
+      - xe-0/0/8
+      - xe-0/0/9

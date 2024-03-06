@@ -1,0 +1,10 @@
+- name: Bootstrap a JUNOS network device
+  hosts: qfx
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Configure switch
+      ansible.builtin.import_role:
+        name: network
+      delegate_to: "{{ groups['witness'][0] }}"
+      delegate_facts: true

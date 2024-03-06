@@ -1,0 +1,14 @@
+vm_name: ad1
+vm_source_pvc: win2k22
+vm_source_pvc_namespace: openshift-virtualization-os-images
+vm_project: production
+vm_networks:
+- type: bridge
+  source_vlan: 100
+  mac: "{{ '52:54:00' | community.general.random_mac(seed=inventory_hostname + '0') }}"
+- type: bridge
+  source_vlan: 101
+- type: bridge
+  source_vlan: 102
+- type: bridge
+  source_vlan: 103

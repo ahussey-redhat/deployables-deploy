@@ -1,1 +1,13 @@
 ---
+vm_network_vlans:
+  - 100
+  - 101
+  - 102
+  - 103
+vm_network_attachments:
+  - project: production
+    vlans:
+      - 100
+      - 101
+      - 102
+      - 103
