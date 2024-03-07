@@ -106,8 +106,34 @@ lan_interfaces:
       - 100
     virtual_router: lan-trusted
     vlan_mode: trunk
+# Sled1 - iDRAC
+  - name: ge-0/0/2
+    native_vlan_id: 100
+    vlans:
+      - 100
+    virtual_router: lan-trusted
+    vlan_mode: trunk
+# Sled2 - iDRAC
+  - name: ge-0/0/3
+    native_vlan_id: 100
+    vlans:
+      - 100
+    virtual_router: lan-trusted
+    vlan_mode: trunk
+# Witness
+  - name: ae1
+    vlans:
+      - 100
+      - 101
+    virtual_router: lan-trusted
+    rstp: true
+    native_vlan_id: 100
+    vlan_mode: trunk
+    members:
+      - ge-0/0/4
+      - ge-0/0/5
 # Dell XR4000 Sled1
-  - name: ae9
+  - name: ae2
     vlans:
       - 100
       - 102
@@ -120,7 +146,7 @@ lan_interfaces:
       - xe-0/0/6
       - xe-0/0/7
 # Dell XR4000 Sled2
-  - name: ae10
+  - name: ae3
     vlans:
       - 100
       - 102
