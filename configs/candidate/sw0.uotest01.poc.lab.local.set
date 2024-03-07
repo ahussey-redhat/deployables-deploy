@@ -26,30 +26,30 @@ set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members dmz
 set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members clients
 set protocols rstp interface ge-0/0/0
 
-set interfaces ge-0/0/1 gratuitous-arp-reply
-set interfaces ge-0/0/1 vlan-tagging
-set interfaces ge-0/0/1 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/1 native-vlan-id 100
-set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/6 gratuitous-arp-reply
+set interfaces ge-0/0/6 vlan-tagging
+set interfaces ge-0/0/6 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/6 native-vlan-id 100
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members services
 
-set interfaces ge-0/0/2 gratuitous-arp-reply
-set interfaces ge-0/0/2 vlan-tagging
-set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/2 native-vlan-id 100
-set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/7 gratuitous-arp-reply
+set interfaces ge-0/0/7 vlan-tagging
+set interfaces ge-0/0/7 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/7 native-vlan-id 100
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members services
 
-set interfaces ge-0/0/3 gratuitous-arp-reply
-set interfaces ge-0/0/3 vlan-tagging
-set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/3 native-vlan-id 100
-set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/8 gratuitous-arp-reply
+set interfaces ge-0/0/8 vlan-tagging
+set interfaces ge-0/0/8 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/8 native-vlan-id 100
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members services
 
 set interfaces ae1 gratuitous-arp-reply
 set protocols rstp interface ae1
 set interfaces ae1 aggregated-ether-options lacp active
 set interfaces ae1 aggregated-ether-options lacp periodic slow
-set interfaces ge-0/0/4 ether-options 802.3ad ae1
-set interfaces ge-0/0/5 ether-options 802.3ad ae1
+set interfaces ge-0/0/10 ether-options 802.3ad ae1
+set interfaces ge-0/0/11 ether-options 802.3ad ae1
 set interfaces ae1 vlan-tagging
 set interfaces ae1 unit 0 family ethernet-switching interface-mode trunk
 set interfaces ae1 native-vlan-id 100
@@ -60,8 +60,8 @@ set interfaces ae2 gratuitous-arp-reply
 set protocols rstp interface ae2
 set interfaces ae2 aggregated-ether-options lacp active
 set interfaces ae2 aggregated-ether-options lacp periodic slow
-set interfaces xe-0/0/6 ether-options 802.3ad ae2
-set interfaces xe-0/0/7 ether-options 802.3ad ae2
+set interfaces xe-0/0/12 ether-options 802.3ad ae2
+set interfaces xe-0/0/13 ether-options 802.3ad ae2
 set interfaces ae2 vlan-tagging
 set interfaces ae2 unit 0 family ethernet-switching interface-mode trunk
 set interfaces ae2 native-vlan-id 100
@@ -73,8 +73,8 @@ set interfaces ae3 gratuitous-arp-reply
 set protocols rstp interface ae3
 set interfaces ae3 aggregated-ether-options lacp active
 set interfaces ae3 aggregated-ether-options lacp periodic slow
-set interfaces xe-0/0/8 ether-options 802.3ad ae3
-set interfaces xe-0/0/9 ether-options 802.3ad ae3
+set interfaces xe-0/0/14 ether-options 802.3ad ae3
+set interfaces xe-0/0/15 ether-options 802.3ad ae3
 set interfaces ae3 vlan-tagging
 set interfaces ae3 unit 0 family ethernet-switching interface-mode trunk
 set interfaces ae3 native-vlan-id 100
