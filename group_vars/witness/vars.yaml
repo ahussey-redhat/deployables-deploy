@@ -15,9 +15,14 @@ cockpit_packages:
   - cockpit-system
   - cockpit-ws
 network_connections:
-  - name: baremetal
-    type: bridge
-    interface_name: baremetal
+  - name: bond0
+    type: bond
+    bond:
+      mode: 802.3ad
+    lacp_rate: fast
+    miimon: 140
+    mac: b4:45:06:f2:a4:91
+    interface_name: bond0
     state: up
     ip:
       dhcp4: true
@@ -25,8 +30,14 @@ network_connections:
   - name: enp4s0
     type: ethernet
     interface_name: enp4s0
-    port_type: bridge
-    controller: baremetal
+    port_type: bond
+    controller: bond0
+    state: up
+  - name: enp5s0
+    type: ethernet
+    interface_name: enp5s0
+    port_type: bond
+    controller: bond0
     state: up
 rhc_state: present
 rhc_insights:
@@ -36,3 +47,27 @@ rhc_repositories:
     state: enabled
   - name: rhel-9-for-x86_64-appstream-rpms
     state: enabled
+podman_firewall:
+  - port: 8444/tcp
+    state: enabled
+  - port: 2222/tcp
+    state: enabled
+podman_create_host_directories: true
+podman_host_directories:
+  "/home/ansible/gitlab/config":
+    owner: root
+    group: root
+    mode: "0750"
+  "/home/ansible/gitlab/logs":
+    owner: root
+    group: root
+    mode: "0750"
+  "/home/ansible/gitlab/data":
+    owner: root
+    group: root
+    mode: "0750"
+podman_kube_specs:
+  - state: started
+    run_as_user: root
+    run_as_group: root
+    kube_file_content: "{{ lookup('template', 'gitlab-pod.yaml') | from_yaml }}"

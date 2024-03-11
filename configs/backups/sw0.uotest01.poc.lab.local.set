@@ -13,35 +13,27 @@ set system processes dhcp-service traceoptions file size 10m
 set system processes dhcp-service traceoptions level all
 set system processes dhcp-service traceoptions flag all
 set chassis aggregated-devices ethernet device-count 16
-set chassis auto-image-upgrade
-set interfaces ge-0/0/0 vlan-tagging
-set interfaces ge-0/0/0 native-vlan-id 1
-set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members services
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members security
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members dmz
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members clients
-set interfaces ge-0/0/1 vlan-tagging
-set interfaces ge-0/0/1 native-vlan-id 100
-set interfaces ge-0/0/1 gratuitous-arp-reply
-set interfaces ge-0/0/1 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members services
-set interfaces ge-0/0/2 vlan-tagging
-set interfaces ge-0/0/2 native-vlan-id 100
-set interfaces ge-0/0/2 gratuitous-arp-reply
-set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members services
-set interfaces ge-0/0/3 vlan-tagging
-set interfaces ge-0/0/3 native-vlan-id 100
-set interfaces ge-0/0/3 gratuitous-arp-reply
-set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members services
-set interfaces ge-0/0/4 ether-options 802.3ad ae1
-set interfaces ge-0/0/5 ether-options 802.3ad ae1
-set interfaces xe-0/0/6 ether-options 802.3ad ae2
-set interfaces xe-0/0/7 ether-options 802.3ad ae2
-set interfaces xe-0/0/8 ether-options 802.3ad ae3
-set interfaces xe-0/0/9 ether-options 802.3ad ae3
+set interfaces ge-0/0/7 vlan-tagging
+set interfaces ge-0/0/7 native-vlan-id 100
+set interfaces ge-0/0/7 gratuitous-arp-reply
+set interfaces ge-0/0/7 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/8 vlan-tagging
+set interfaces ge-0/0/8 native-vlan-id 100
+set interfaces ge-0/0/8 gratuitous-arp-reply
+set interfaces ge-0/0/8 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/9 vlan-tagging
+set interfaces ge-0/0/9 native-vlan-id 100
+set interfaces ge-0/0/9 gratuitous-arp-reply
+set interfaces ge-0/0/9 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/10 ether-options 802.3ad ae1
+set interfaces ge-0/0/11 ether-options 802.3ad ae1
+set interfaces xe-0/0/12 ether-options 802.3ad ae2
+set interfaces xe-0/0/13 ether-options 802.3ad ae2
+set interfaces xe-0/0/14 ether-options 802.3ad ae3
+set interfaces xe-0/0/15 ether-options 802.3ad ae3
 set interfaces ae1 vlan-tagging
 set interfaces ae1 native-vlan-id 100
 set interfaces ae1 gratuitous-arp-reply
@@ -73,7 +65,6 @@ set protocols l2-learning global-mac-table-aging-time 120
 set protocols lldp interface all
 set protocols lldp-med interface all
 set protocols igmp-snooping vlan default
-set protocols rstp interface ge-0/0/0
 set protocols rstp interface ae1
 set protocols rstp interface ae2
 set protocols rstp interface ae3

@@ -100,21 +100,21 @@ virtual_routers:
   - lan-trusted
 lan_interfaces:
 # Laptop
-  - name: ge-0/0/6
-    native_vlan_id: 100
-    vlans:
-      - 100
-    virtual_router: lan-trusted
-    vlan_mode: trunk
-# Sled1 - iDRAC
   - name: ge-0/0/7
     native_vlan_id: 100
     vlans:
       - 100
     virtual_router: lan-trusted
     vlan_mode: trunk
-# Sled2 - iDRAC
+# Sled1 - iDRAC
   - name: ge-0/0/8
+    native_vlan_id: 100
+    vlans:
+      - 100
+    virtual_router: lan-trusted
+    vlan_mode: trunk
+# Sled2 - iDRAC
+  - name: ge-0/0/9
     native_vlan_id: 100
     vlans:
       - 100

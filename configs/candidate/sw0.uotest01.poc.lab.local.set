@@ -17,20 +17,14 @@ set chassis aggregated-devices ethernet device-count 16
 
 delete interfaces
 
-set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode trunk
-set interfaces ge-0/0/0 vlan-tagging
-set interfaces ge-0/0/0 native-vlan-id 1
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members services
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members security
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members dmz
-set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members clients
-set protocols rstp interface ge-0/0/0
-
-set interfaces ge-0/0/6 gratuitous-arp-reply
-set interfaces ge-0/0/6 vlan-tagging
 set interfaces ge-0/0/6 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/6 vlan-tagging
 set interfaces ge-0/0/6 native-vlan-id 100
 set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members services
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members security
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members dmz
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members clients
+set protocols rstp interface ge-0/0/6
 
 set interfaces ge-0/0/7 gratuitous-arp-reply
 set interfaces ge-0/0/7 vlan-tagging
@@ -43,6 +37,12 @@ set interfaces ge-0/0/8 vlan-tagging
 set interfaces ge-0/0/8 unit 0 family ethernet-switching interface-mode trunk
 set interfaces ge-0/0/8 native-vlan-id 100
 set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members services
+
+set interfaces ge-0/0/9 gratuitous-arp-reply
+set interfaces ge-0/0/9 vlan-tagging
+set interfaces ge-0/0/9 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/9 native-vlan-id 100
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members services
 
 set interfaces ae1 gratuitous-arp-reply
 set protocols rstp interface ae1

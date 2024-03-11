@@ -15,7 +15,11 @@ all:
     qfx:
       hosts:
         sw0.uotest01.poc.lab.local:
+    router:
+      hosts:
+        rt0.uotest01.poc.lab.local:
     network_devices:
       children:
         qfx:
+        router:
 
