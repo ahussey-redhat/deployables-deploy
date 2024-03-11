@@ -21,7 +21,7 @@ network_connections:
       mode: 802.3ad
       lacp_rate: fast
       miimon: 140
-    mac: b4:45:06:f2:a4:91
+    # mac: b4:45:06:f2:a4:91
     interface_name: bond0
     state: up
     ip:
