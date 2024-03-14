@@ -1,0 +1,11 @@
+collections:
+  - name: ansible.posix
+  - name: community.general
+  - name: community.libvirt
+  - name: community.okd
+  - name: juniper.device
+  - name: kubernetes.core
+  - name: microsoft.ad
+  - name: ansible.windows
+  - name: git+https://github.com/ahussey-redhat/deployables.ocp.git
+    scm: git

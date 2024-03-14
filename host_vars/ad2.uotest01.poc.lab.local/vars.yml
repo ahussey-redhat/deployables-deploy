@@ -5,6 +5,6 @@ vm_enable_default_network: false
 vm_networks:
   - type: bridge
     source_vlan: 101
-vm_cluster: sno-a
+vm_cluster: sno-b
 vm_os: windows
 vm_name: ad01

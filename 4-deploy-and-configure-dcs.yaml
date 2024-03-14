@@ -1,0 +1,64 @@
+---
+- name: Deploy VMs
+  hosts: "{{ groups['domain_controllers'][0] }}"
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Deploy VMs
+      ansible.builtin.import_role:
+        name: deployables.ocp.vms_deploy
+
+    - name: Ensure all VMs are online
+      ansible.builtin.wait_for_connection:
+        timeout: 600
+        sleep: 10
+
+    - name: Ensure Domain exists
+      microsoft.ad.domain:
+        create_dns_delegation: true
+        database_path: C:\Windows\NTDS
+        dns_domain_name: "{{ unid }}.{{ base_domain }}"
+        domain_mode: Win2012R2
+        domain_netbios_name: "{{ unid | upper }}"
+        forest_mode: Win2012R2
+        safe_mode_password: "{{ safe_mode_password }}"
+        sysvol_path: C:\Windows\SYSVOL
+      register: domain_install
+
+    - name: Reboot host if install requires it
+      ansible.windows.win_reboot:
+      when: domain_install.reboot_required
+
+    - name: Ensure intial domain admin is configured
+      microsoft.ad.user:
+        name: "{{ unid }}-admin"
+        firstname: "{{ unid }}"
+        surname: admin
+        password: "{{ safe_mode_password }}"
+        state: present
+        groups:
+          set:
+            - Domain Admins
+
+- name: Deploy VMs
+  hosts: "{{ groups['domain_controllers'][1] }}"
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Deploy VMs
+      ansible.builtin.import_role:
+        name: deployables.ocp.vms_deploy
+
+    - name: Ensure all VMs are online
+      ansible.builtin.wait_for_connection:
+        timeout: 600
+        sleep: 10
+
+    - name: Ensure dc2 is a domain controller
+      microsoft.ad.domain_controller:
+        dns_domain_name: "{{ unid }}.{{ base_domain }}"
+        domain_admin_user: "{{ unid }}-admin@{{ unid }}.{{ base_domain }}"
+        domain_admin_password: "{{ safe_mode_password }}"
+        safe_mode_password: "{{ safe_mode_password }}"
+        state: domain_controller
+        reboot: true

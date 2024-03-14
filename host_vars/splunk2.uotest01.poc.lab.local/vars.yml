@@ -1,10 +1,10 @@
 ---
-ansible_user: administrator
+ansible_user: cloud-user
 vm_project: test
 vm_enable_default_network: false
 vm_networks:
   - type: bridge
     source_vlan: 101
-vm_cluster: sno-a
-vm_os: windows
-vm_name: ad01
+vm_cluster: sno-b
+vm_os: rhel8
+vm_name: splunk2

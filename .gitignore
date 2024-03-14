@@ -1,3 +1,7 @@
-dependencies/*
 !.gitkeep
+!imageset-config.yaml
+!requirements.yml
+*.set
+dependencies/*
 .oc-mirror.log
+

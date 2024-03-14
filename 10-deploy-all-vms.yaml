@@ -1,14 +1,13 @@
 ---
 - name: Deploy VMs
-  import_playbook: rh.cnv.vm_deploy
-
-- name: Ensure VMs are available
   hosts: virtual_machines
-  gather_facts: no
-  remote_user: root
-  vars:
-    ansible_password: "{{ vm_root_password }}"
+  gather_facts: false
+  become: false
   tasks:
+    - name: Deploy VMs
+      import_role:
+        name: deployables.ocp.vms_deploy
+
     - name: Ensure all VMs are online
       ansible.builtin.wait_for_connection:
         timeout: 600

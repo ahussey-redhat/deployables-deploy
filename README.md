@@ -2,21 +2,17 @@
 Repository to host artefacts related to deploying and configuring deployables
 
 ## Setup
-Ensure you have the following Ansible collections downloaded `./dependencies`:
-  - ansible-posix-1.5.4.tar.gz
-  - ansible-utils-3.1.0.tar.gz
-  - community-general-8.3.0.tar.gz
-  - community-libvirt-1.3.0.tar.gz
-  - community-okd-3.0.1.tar.gz
-  - kubernetes-core-3.0.0.tar.gz
-  - containers-podman-1.12.0.tar.gz
-  - redhat-rhel_system_roles-1.22.0.tar.gz
-  - redhat-satellite-4.0.0.tar.gz
-  - redhat-satellite_operations-2.1.0.tar.gz
+Ensure you have the following Ansible collections downloaded and placed in `./dependencies/ansible`:
+  - redhat.rhel_system_roles
+  - redhat.satellite
+  - redhat.satellite_operations
 
-Install the required collections:
+Install the collections:
 ```bash
-ansible-galaxy install -r requirements.yaml
+# You may need to manually add the above Red Hat collections to the requirements.yml file
+cd ./dependencies/ansible
+ansible-galaxy install -r requirements.yml
+cd -
 ```
 
 ## Configure the `witness` node
@@ -24,9 +20,7 @@ ansible-galaxy install -r requirements.yaml
 ### Prerequisites
 
 1. Ensure that you have the `oc-mirror` archive available
-1. Ensure you have the `openshift-baremetal-install` binary available
-  1. It should be placed in your working directory
-  1. This isn't kept in the repository to save space
+
 
 ### Run the playbook
 

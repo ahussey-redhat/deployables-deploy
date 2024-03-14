@@ -136,6 +136,7 @@ lan_interfaces:
   - name: ae2
     vlans:
       - 100
+      - 101
       - 102
       - 103
     virtual_router: lan-trusted
@@ -149,6 +150,7 @@ lan_interfaces:
   - name: ae3
     vlans:
       - 100
+      - 101
       - 102
       - 103
     virtual_router: lan-trusted

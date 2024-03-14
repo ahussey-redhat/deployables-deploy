@@ -1,0 +1,10 @@
+vm_network_vlans:
+  - 101
+  - 102
+  - 103
+vm_network_attachments:
+  - project: test
+    vlans:
+      - 101
+      - 102
+      - 103
