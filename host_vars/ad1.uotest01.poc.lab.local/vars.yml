@@ -1,5 +1,5 @@
 ---
-ansible_user: administrator
+ansible_user: local-admin
 vm_project: test
 vm_enable_default_network: false
 vm_networks:

@@ -4,4 +4,5 @@
 *.set
 dependencies/*
 .oc-mirror.log
+dev-requirements.yml
 
