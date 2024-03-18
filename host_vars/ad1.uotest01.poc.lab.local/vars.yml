@@ -1,5 +1,4 @@
 ---
-ansible_user: local-admin
 vm_project: test
 vm_enable_default_network: false
 vm_networks:
@@ -7,4 +6,4 @@ vm_networks:
     source_vlan: 101
 vm_cluster: sno-a
 vm_os: windows
-vm_name: ad01
+vm_name: ad1

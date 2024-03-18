@@ -1,21 +1,21 @@
 ---
 - name: Deploy VMs
-  hosts: "{{ groups['domain_controllers'][0] }}"
+  hosts: primary_domain_controller
   gather_facts: false
   become: false
   tasks:
-    - name: Deploy VMs
+    - name: Deploy VM
       ansible.builtin.import_role:
         name: deployables.ocp.vms_deploy
 
-    - name: Ensure all VMs are online
+    - name: Ensure VM is online
       ansible.builtin.wait_for_connection:
         timeout: 600
         sleep: 10
 
     - name: Ensure Domain exists
       microsoft.ad.domain:
-        create_dns_delegation: true
+        create_dns_delegation: false
         database_path: C:\Windows\NTDS
         dns_domain_name: "{{ unid }}.{{ base_domain }}"
         domain_mode: Win2012R2
@@ -40,8 +40,14 @@
           set:
             - Domain Admins
 
+    - name: Ensure global forwarder is configured
+      ansible.windows.win_powershell:
+        script: |
+          Set-DnsServerForwarder -IPAddress "192.168.101.1"
+      when: domain_install.changed
+
 - name: Deploy VMs
-  hosts: "{{ groups['domain_controllers'][1] }}"
+  hosts: member_domain_controllers
   gather_facts: false
   become: false
   tasks:

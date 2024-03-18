@@ -11,14 +11,22 @@ all:
         sled2.uotest01.poc.lab.local:
     virtual_machines:
       children:
-        domain_controllers:
-          hosts:
-            ad1.uotest01.poc.lab.local:
-            ad2.uotest01.poc.lab.local:
-        splunk_servers:
-          hosts:
-            splunk1.uotest01.poc.lab.local:
-            splunk2.uotest01.poc.lab.local:
+        windows:
+          children:
+            domain_controllers:
+              children:
+                primary_domain_controller:
+                  hosts:
+                    ad1.uotest01.poc.lab.local:
+                member_domain_controllers:
+                  hosts:
+                    ad2.uotest01.poc.lab.local:
+        linux:
+          children:
+            splunk_servers:
+              hosts:
+                splunk1.uotest01.poc.lab.local:
+                splunk2.uotest01.poc.lab.local:
     network_devices:
       children:
         qfx:

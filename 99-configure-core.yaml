@@ -1,0 +1,9 @@
+---
+- name: Configure the 'core'
+  hosts: witness
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Configure the 'core'
+      import_role:
+        name: deployables.ocp.core_deploy
