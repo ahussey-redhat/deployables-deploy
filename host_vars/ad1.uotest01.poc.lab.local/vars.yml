@@ -1,6 +1,6 @@
 ---
 vm_project: test
-vm_enable_default_network: false
+vm_enable_default_network: true
 vm_networks:
   - type: bridge
     source_vlan: 101

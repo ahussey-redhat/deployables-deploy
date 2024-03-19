@@ -36,3 +36,13 @@ cd -
 ```bash
 ansible-playbook deployables.ocp.configure_witness_node -vbKk --vault-id @prompt
 ```
+
+
+### Use workloads
+
+#### Access MSSQL deployment
+
+```bash
+sqlcmd -S mssql-deployment -C -U sa
+# Enter password when prompted. You can find the password in project "test" -> "Secrets" -> "mssql"
+```

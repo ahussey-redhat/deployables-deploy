@@ -1,0 +1,100 @@
+---
+- name: Deploy VMs
+  hosts: splunk_servers
+  gather_facts: false
+  become: false
+  serial: 1
+  tasks:
+    - name: Deploy VM
+      ansible.builtin.import_role:
+        name: deployables.ocp.vms_deploy
+
+    - name: Ensure VM is online
+      ansible.builtin.wait_for_connection:
+        timeout: 600
+        sleep: 10
+
+    - name: Register VM
+      ansible.builtin.import_role:
+        name: redhat.rhel_system_roles.rhc
+      become: true
+
+    - name: Configure Microsoft Repo (RHEL8) [internet connected]
+      ansible.builtin.yum_repository:
+        name: packages-microsoft-com-prod
+        baseurl: https://packages.microsoft.com/rhel/8/prod/
+        description: Microsoft RHEL8 repository
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      when: "vm_os == 'rhel8'"
+      become: true
+
+    - name: Configure Microsoft Repo (RHEL9) [internet connected]
+      ansible.builtin.yum_repository:
+        name: packages-microsoft-com-prod
+        baseurl: https://packages.microsoft.com/rhel/9/prod/
+        description: Microsoft RHEL9 repository
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      when: "vm_os == 'rhel9'"
+      become: true
+
+    - name: Configure Cockpit
+      ansible.builtin.import_role:
+        name: redhat.rhel_system_roles.cockpit
+      become: true
+
+    - name: Update system # noqa: package-latest
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+      become: true
+
+    - name: Install useful packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - tmux
+        - bind-utils
+        - firewalld
+        - mssql-tools18
+        - unixODBC-devel
+      environment:
+        ACCEPT_EULA: 'Y'
+      become: true
+
+    - name: Ensure firewalld service has started
+      ansible.builtin.systemd:
+        name: firewalld
+        state: started
+        enabled: true
+      become: true
+
+    - name: Ensure /etc/resolv.conf is configure correctly
+      ansible.builtin.copy:
+        dest: /etc/resolv.conf
+        content: |
+          {{ ansible_managed | comment }}
+          nameserver 127.0.0.53
+          options edns0 trust-ad
+      become: true
+
+    - name: Ensure systemd-resolved service has started
+      ansible.builtin.systemd:
+        name: systemd-resolved
+        state: started
+        enabled: true
+      become: true
+
+    - name: Ensure SQL tools accessible
+      ansible.builtin.file:
+        src: "/opt/mssql-tools18/bin/{{ item }}"
+        path: "/usr/local/bin/{{ item }}"
+        state: link
+      loop:
+        - sqlcmd
+        - bcp
+      become: true
