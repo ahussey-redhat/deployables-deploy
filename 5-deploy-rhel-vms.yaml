@@ -59,13 +59,21 @@
       loop:
         - tmux
         - bind-utils
-        - systemd-resolved
         - firewalld
         - mssql-tools18
         - unixODBC-devel
       environment:
         ACCEPT_EULA: 'Y'
       become: true
+
+    - name: Install systemd-resolved
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - systemd-resolved
+      become: true
+      when: "vm_os == 'rhel9'"
 
     - name: Ensure firewalld service has started
       ansible.builtin.systemd:
