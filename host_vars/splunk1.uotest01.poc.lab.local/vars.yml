@@ -1,5 +1,4 @@
 ---
-ansible_user: cloud-user
 vm_project: test
 vm_enable_default_network: true
 vm_networks:

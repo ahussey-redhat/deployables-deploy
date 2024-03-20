@@ -59,6 +59,7 @@
       loop:
         - tmux
         - bind-utils
+        - systemd-resolved
         - firewalld
         - mssql-tools18
         - unixODBC-devel
