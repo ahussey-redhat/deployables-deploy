@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../deployables.ocp"
+		},
+
+		{
+			"path": "../deployables-gitops"
+		}
+	],
+	"settings": {
+		"ansible.python.interpreterPath": "/usr/bin/python"
+	}
+}

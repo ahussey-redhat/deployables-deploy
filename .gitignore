@@ -1,8 +1,10 @@
+dependencies/*
 !.gitkeep
-!imageset-config.yaml
+!dependencies/imageset-config.yaml
+!dependencies/archive/.gitkeep
+!dependencies/python/.gitkeep
 !requirements.yml
 *.set
-dependencies/*
 .oc-mirror.log
 dev-requirements.yml
 vault-password

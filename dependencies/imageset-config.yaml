@@ -1,0 +1,51 @@
+---
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+storageConfig:
+  local:
+    path: ./archive
+mirror:
+  platform:
+    channels:
+    - name: stable-4.14
+      type: ocp
+    graph: true
+  operators:
+    - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.14
+      packages:
+        - name: openshift-gitops-operator
+          channels:
+             - name: latest
+        - name: kubernetes-nmstate-operator
+          channels:
+            - name: stable
+        - name: kubevirt-hyperconverged
+          channels:
+            - name: stable
+        - name: local-storage-operator
+          channels:
+            - name: stable
+        - name: lvms-operator
+          channels:
+            - name: stable-4.14
+        - name: odf-operator
+          channels:
+            - name: stable-4.14
+        - name: cincinnati-operator
+          channels:
+            - name: v1
+        - name: devspaces
+          channels:
+            - name: stable
+        - name: openshift-pipelines-operator-rh
+          channels:
+            - name: latest
+  additionalImages:
+    - name: registry.redhat.io/ubi9/ubi:latest
+    - name: registry.access.redhat.com/ubi9/httpd-24:latest
+    - name: registry.redhat.io/rhel8/support-tools:latest
+    - name: registry.redhat.io/rhel8/rhel-guest-image:latest
+    - name: registry.redhat.io/rhel9/rhel-guest-image:latest
+    - name: mcr.microsoft.com/mssql/rhel/server:2022-preview-rhel-9
+    - name: docker.io/gitlab/gitlab-ce:latest
+  helm: {}

@@ -1,3 +1,7 @@
 ---
-- name: Use deployables.ocp tasks to build the build node iso
-  ansible.builtin.import_playbook: deployables.ocp.build_node_iso
+- name: Create build node ISO
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - role: deployables.ocp.create_build_node_iso
