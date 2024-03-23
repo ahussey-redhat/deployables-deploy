@@ -9,3 +9,4 @@ dependencies/*
 dev-requirements.yml
 vault-password
 creds
+venv
