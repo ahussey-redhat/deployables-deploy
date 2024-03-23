@@ -1,5 +1,5 @@
 ---
-artifact_directory: 'dependencies'
+artifact_directory: '../'
 unid: uotest01
 base_domain: poc.lab.local
 vm_domain: poc.lab.local
