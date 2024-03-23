@@ -22,13 +22,7 @@ mirror:
         - name: kubevirt-hyperconverged
           channels:
             - name: stable
-        - name: local-storage-operator
-          channels:
-            - name: stable
         - name: lvms-operator
-          channels:
-            - name: stable-4.14
-        - name: odf-operator
           channels:
             - name: stable-4.14
         - name: cincinnati-operator
@@ -40,12 +34,29 @@ mirror:
         - name: openshift-pipelines-operator-rh
           channels:
             - name: latest
+        - name: servicemeshoperator
+          channels:
+            - name: stable
+        - name: skupper-operator
+          channels:
+            - name: alpha
+        - name: advanced-cluster-management
+          channels:
+            - name: release-2.9
+        - name: rhacs-operator
+          channels:
+            - name: stable
+        - name: multicluster-engine
+          channels:
+            - name: stable-2.5
   additionalImages:
     - name: registry.redhat.io/ubi9/ubi:latest
     - name: registry.access.redhat.com/ubi9/httpd-24:latest
+    - name: registry.access.redhat.com/ubi8/ubi-micro:latest
     - name: registry.redhat.io/rhel8/support-tools:latest
     - name: registry.redhat.io/rhel8/rhel-guest-image:latest
     - name: registry.redhat.io/rhel9/rhel-guest-image:latest
+    - name: registry.redhat.io/rhbk/keycloak-rhel9:22
     - name: mcr.microsoft.com/mssql/rhel/server:2022-preview-rhel-9
     - name: docker.io/gitlab/gitlab-ce:latest
   helm: {}
