@@ -23,3 +23,4 @@
           retries: 100
           delay: 10
         ```
+- [ ] Specify MAC address of bond0 for witness-node during kickstart
