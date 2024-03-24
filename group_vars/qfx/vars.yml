@@ -160,49 +160,41 @@ lan_interfaces:
     members:
       - xe-0/0/14
       - xe-0/0/15
-# Workshop Laptop1
-  - name: ge-0/0/16
-    native_vlan_id: 100
+# Workshop NAS
+  - name: ae4
     vlans:
       - 100
     virtual_router: lan-trusted
-    vlan_mode: trunk
-# Workshop Laptop 2
-  - name: ge-0/0/17
+    rstp: true
     native_vlan_id: 100
-    vlans:
-      - 100
-    virtual_router: lan-trusted
     vlan_mode: trunk
-# Workshop Laptop 3
-  - name: ge-0/0/18
-    native_vlan_id: 100
-    vlans:
-      - 100
-    virtual_router: lan-trusted
-    vlan_mode: trunk
-# Workshop Laptop 4
-  - name: ge-0/0/19
-    native_vlan_id: 100
-    vlans:
-      - 100
-    virtual_router: lan-trusted
-    vlan_mode: trunk
-# Workshop Laptop 5
+    members:
+      - ge-0/0/16
+      - ge-0/0/17
+      - ge-0/0/18
+      - ge-0/0/19
+# Sled1 - iDRAC - backup
   - name: ge-0/0/20
     native_vlan_id: 100
     vlans:
       - 100
     virtual_router: lan-trusted
     vlan_mode: trunk
-# Sled1 - iDRAC - backup
+# Sled2 - iDRAC - backup
+  - name: ge-0/0/21
+    native_vlan_id: 100
+    vlans:
+      - 100
+    virtual_router: lan-trusted
+    vlan_mode: trunk
+# Workshop Laptop 1
   - name: ge-0/0/22
     native_vlan_id: 100
     vlans:
       - 100
     virtual_router: lan-trusted
     vlan_mode: trunk
-# Sled2 - iDRAC - backup
+# Workshop WAP
   - name: ge-0/0/23
     native_vlan_id: 100
     vlans:

@@ -9,3 +9,4 @@ collections:
   - name: ansible.windows
   - name: git+https://github.com/ahussey-redhat/deployables.ocp.git
     scm: git
+    version: main
