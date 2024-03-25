@@ -27,20 +27,18 @@ rsync -av deployables-deploy/dependencies/ /run/media/user/dependencies/
 rsync -av --exclude dependencies --exclude dev-requirements.yml --exclude deployables.code-workspace --exclude download_and_install_deps.sh deployables-deploy /run/media/user/dependencies/
 ```
 
-### Run the playbook
+### Install and Configure the Witness Node
 
-> **Note**
->
-> You will need to have valid SSH credentials to access the witness node.
-> These credentials would have been created during the build of the ISO,
-> which was used to deployed the witness node.
->
-> You will also need the `vault` credential, which the secrets were
-> encrypted with.
-
-```bash
-ansible-playbook deployables.ocp.configure_witness_node -vbKk --vault-id @prompt
-```
+1. Insert the USB hub containing the two prepared USBs
+  1. USB 1 has been prepared with Ventoy and contains:
+    1. The RHEL9 ISO
+    1. The kickstart file
+    1. The Ventoy configuration file
+  1. USB 2 has been prepared with all the dependencies
+1. Power on the witness node
+  The witness node will perform and automated installation and then shutdown. The installation may take up to 40 minutes, depending how many artefacts the `dependencies` directory contains
+1. When the witness node shuts down, remove the USB hub and power the witness node back on
+  The witness node will then run the appropriate automation to fully configure it and prepare to deploy OpenShift. This may take 1-2 hours to complete, depending on the size of the `oc-mirror` tarball
 
 
 ### Use workloads
