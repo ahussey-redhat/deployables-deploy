@@ -23,7 +23,7 @@ cd -
 
 ### rsync commands for dependency USB creation
 ```bash
-rsync -av deployables-deploy/dependencies/ /run/media/user/dependencies/
+rsync -av --exclude rhel-9.3-x86_64-dvd.iso deployables-deploy/dependencies/ /run/media/user/dependencies/
 rsync -av --exclude dependencies --exclude dev-requirements.yml --exclude deployables.code-workspace --exclude download_and_install_deps.sh deployables-deploy /run/media/user/dependencies/
 ```
 
