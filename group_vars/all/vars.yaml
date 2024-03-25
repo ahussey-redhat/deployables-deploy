@@ -1,5 +1,5 @@
 ---
-artifact_directory: '../'
+artifact_directory: 'dependencies'
 unid: uotest01
 base_domain: poc.lab.local
 vm_domain: poc.lab.local
@@ -8,3 +8,4 @@ ssh_pub_key: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNT
 hub_api_url: https://api.core.poc.lab.local:6443
 hub_admin_username: kubeadmin
 ansible_managed: "Managed by Ansible"
+openshift_version: "4.14.15"
