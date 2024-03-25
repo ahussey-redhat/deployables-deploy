@@ -14,6 +14,11 @@ cockpit_packages:
   - cockpit-storaged
   - cockpit-system
   - cockpit-ws
+kickstart_network_config:
+  ip: 192.168.100.250
+  gateway: 192.168.100.1
+  netmask: 255.255.255.0
+  nameserver: 192.168.100.1
 network_connections:
   - name: bond0
     type: bond
@@ -25,7 +30,14 @@ network_connections:
     interface_name: bond0
     state: up
     ip:
-      dhcp4: true
+      address:
+        - 192.168.100.250/24
+      gateway4: 192.168.100.1
+      dns:
+        - 192.168.100.1
+      dns_search:
+        - uotest01.poc.lab.local
+        - poc.lab.local
       auto6: false
   - name: enp4s0
     type: ethernet
