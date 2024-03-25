@@ -60,9 +60,13 @@ rhc_repositories:
   - name: rhel-9-for-x86_64-appstream-rpms
     state: enabled
 podman_firewall:
+  # GitLab
   - port: 8444/tcp
     state: enabled
   - port: 2222/tcp
+    state: enabled
+  # httpd
+  - port: 8888/tcp
     state: enabled
 podman_create_host_directories: true
 podman_host_directories:
@@ -78,8 +82,16 @@ podman_host_directories:
     owner: root
     group: root
     mode: "0750"
+  "/home/ansible/ocp-isos":
+    owner: root
+    group: root
+    mode: "0750"
 podman_kube_specs:
   - state: started
     run_as_user: root
     run_as_group: root
     kube_file_content: "{{ lookup('template', 'gitlab-pod.yaml') | from_yaml }}"
+  - state: started
+    run_as_user: root
+    run_as_group: root
+    kube_file_content: "{{ lookup('template', 'httpd-pod.yaml') | from_yaml }}"
