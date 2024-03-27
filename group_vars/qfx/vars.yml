@@ -187,14 +187,16 @@ lan_interfaces:
       - 100
     virtual_router: lan-trusted
     vlan_mode: trunk
-# Workshop Laptop 1
+# Workshop WAP
   - name: ge-0/0/22
     native_vlan_id: 100
     vlans:
       - 100
+      - 101
+      - 103
     virtual_router: lan-trusted
     vlan_mode: trunk
-# Workshop WAP
+# Workshop Laptop 1
   - name: ge-0/0/23
     native_vlan_id: 100
     vlans:

@@ -9,3 +9,5 @@ hub_api_url: https://api.core.poc.lab.local:6443
 hub_admin_username: kubeadmin
 ansible_managed: "Managed by Ansible"
 openshift_version: "4.14.15"
+sno_a_idrac_ip: "192.168.100.10"
+sno_b_idrac_ip: "192.168.100.11"
