@@ -4,7 +4,7 @@ unid: uotest01
 base_domain: poc.lab.local
 vm_domain: poc.lab.local
 machine_network: 192.168.100.0/24
-ssh_pub_key: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCxA9Gwm4Rlp1i2eunivOKAj88KVoFdM5GjqjPKHHta5ukwQh1heEhRX2M6ZeueDxaClcTb+Y7soxMNN38nOHR4= user@fedora-ws02.prod.local"
+ssh_pub_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBP1ogAWldWtDgmJD/1GspAFj794HE2eHrP89Gqabju/"
 hub_api_url: https://api.core.poc.lab.local:6443
 hub_admin_username: kubeadmin
 ansible_managed: "Managed by Ansible"
