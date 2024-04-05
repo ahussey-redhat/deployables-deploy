@@ -6,4 +6,4 @@ vm_networks:
     source_vlan: 101
 vm_cluster: sno-a
 vm_os: rhel9
-vm_name: splunk1
+vm_name: mission1

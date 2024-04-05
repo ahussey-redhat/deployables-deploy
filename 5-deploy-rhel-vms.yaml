@@ -1,6 +1,6 @@
 ---
 - name: Deploy VMs
-  hosts: splunk_servers
+  hosts: linux
   gather_facts: false
   become: false
   serial: 1
@@ -106,4 +106,9 @@
       loop:
         - sqlcmd
         - bcp
+      become: true
+
+    - name: Create static route for the pod network
+      ansible.builtin.shell:
+        cmd: "ip route add 172.30.0.0/16 via 10.0.2.1"
       become: true

@@ -27,6 +27,15 @@ all:
               hosts:
                 splunk1.uotest01.poc.lab.local:
                 splunk2.uotest01.poc.lab.local:
+            logistics:
+                logistics1.uotest01.poc.lab.local:
+                logistics2.uotest01.poc.lab.local:
+            mission:
+                mission1.uotest01.poc.lab.local:
+                mission2.uotest01.poc.lab.local:
+            medical:
+                medical1.uotest01.poc.lab.local:
+                medical2.uotest01.poc.lab.local:
     network_devices:
       children:
         qfx:

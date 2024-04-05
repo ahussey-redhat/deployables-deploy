@@ -9,6 +9,9 @@
 
 		{
 			"path": "../deployables-gitops"
+		},
+		{
+			"path": "../cockpit-openshift"
 		}
 	],
 	"settings": {

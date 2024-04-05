@@ -5,5 +5,5 @@ vm_networks:
   - type: bridge
     source_vlan: 101
 vm_cluster: sno-b
-vm_os: rhel8
+vm_os: rhel9
 vm_name: splunk2
